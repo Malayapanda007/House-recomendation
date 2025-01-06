@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Project - Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="../static/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <header class="bg-dark text-white">
+        <div class="container d-flex justify-content-between align-items-center py-3">
+            <!-- Logo and Title -->
+            <div class="d-flex align-items-center">
+                <img src="../static/log.webp" alt="Logo" style="height: 40px; margin-right: 20px;">
+                <h1 class="ghar">GHARWALI</h1>
+            </div>
+            <!-- Navigation Bar -->
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/analysis">Analysis</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/prediction">Predict Prices</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/recommend">Recommendations</a>
+                        </li>
+                            <!--
+                            <li class="nav-item">
+                                <a class="nav-link" href="insights.html">Insights</a>
+                            </li>
+                            -->
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="flex-grow-1">
+        <div class="hero-section text-white text-center py-5">
+            <div class="container">
+                <h2>Welcome to My Machine Learning Project</h2>
+                <p class="lead">Explore data-driven insights, predict house prices, and find your dream home.</p>
+            </div>
+        </div>
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="card h-100 text-center shadow-sm transition-effect">
+                        <div class="card-body">
+                            <h3 class="card-title">Data Analysis</h3>
+                            <p class="card-text">Explore detailed analysis and visualizations to understand market trends.</p>
+                            <a href="/analysis" class="btn btn-info">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="card h-100 text-center shadow-sm transition-effect">
+                        <div class="card-body">
+                            <h3 class="card-title">Predict House Prices</h3>
+                            <p class="card-text">Use our predictive model to estimate house prices with high accuracy.</p>
+                            <a href="/predict" class="btn btn-info">Predict Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="card h-100 text-center shadow-sm transition-effect">
+                        <div class="card-body">
+                            <h3 class="card-title">Recommendations</h3>
+                            <p class="card-text">Discover personalized recommendations for finding your dream home.</p>
+                            <a href="/recommend" class="btn btn-info">Explore Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="card h-100 text-center shadow-sm transition-effect">
+                        <div class="card-body">
+                            <h3 class="card-title">Insights</h3>
+                            <p class="card-text">Gain actionable insights and strategies from the data.</p>
+                           <a class="btn btn-info">View Insights</a> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="bg-dark text-white text-center py-3 mt-auto">
+        <p>&copy; 2024 Malaya Panda - All Rights Reserved</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

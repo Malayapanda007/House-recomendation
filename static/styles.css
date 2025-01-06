@@ -1,0 +1,148 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: #e0e0e0;
+    background-color: #121212;
+}
+
+h1, h2, h3 {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+/* Navbar Styles */
+.navbar-nav .nav-item .nav-link {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.navbar-nav .nav-item .nav-link.active {
+    color: #00c9ff;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(to right, #00c9ff, #92fe9d);
+    color: white;
+    text-align: center;
+    padding: 6rem 1rem;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+
+.hero-section h2 {
+    margin-bottom: 1rem;
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.hero-section p {
+    font-size: 1.2rem;
+    margin: 0 auto;
+    max-width: 700px;
+    line-height: 1.8;
+}
+
+/* Card Styles */
+.card {
+    background: #1e1e1e;
+    border: none;
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-title {
+    color: #00c9ff;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.card-text {
+    color: #b0b0b0;
+}
+
+.btn-info {
+    background-color: #00c9ff;
+    border-color: #00c9ff;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-info:hover {
+    background-color: #0099cc;
+    transform: translateY(-3px);
+}
+
+.transition-effect:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Footer */
+footer {
+    border-top: 3px solid #00c9ff;
+    font-size: 0.9rem;
+    font-weight: 500;
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 4rem 1rem;
+    }
+
+    .hero-section h2 {
+        font-size: 2.2rem;
+    }
+
+    .hero-section p {
+        font-size: 1rem;
+    }
+
+    .navbar-nav .nav-item .nav-link {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section {
+        padding: 3rem 1rem;
+    }
+
+    .hero-section h2 {
+        font-size: 1.8rem;
+    }
+
+    .hero-section p {
+        font-size: 0.9rem;
+    }
+}
+.ghar {
+    font-size: 28px;   
+     
+    color: #A6A6A6;  /* Light Gray */
+    font-weight: bold;
+    font-family: 'Allura', cursive;
+
+
+}
+
+
+#predictionResult {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+#predictionResult h3 {
+    font-size: 28px; /* Adjust the font size for the h3 element */
+    color: #89e30a; /* Optional: change text color */
+}

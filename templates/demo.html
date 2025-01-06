@@ -1,0 +1,86 @@
+<style>
+    /* Base styles for the dropdown */
+    .form-control {
+        width: 100%; /* Occupy the full width of the parent container */
+        max-width: 400px; /* Maximum width for larger screens */
+        padding: 10px; /* Padding for better appearance */
+        font-size: 16px; /* Set a readable font size */
+        border-radius: 5px; /* Rounded corners for better aesthetics */
+        border: 1px solid #ccc; /* Light border */
+        box-sizing: border-box; /* Include padding and borders in width/height calculations */
+        background-color: #f9f9f9; /* Light background color */
+        margin: 0 auto 20px auto; /* Center align and add space below */
+    }
+    
+    /* Dropdown options styling */
+    .form-control option {
+        white-space: normal; /* Allow long text to wrap properly */
+        font-size: inherit; /* Match the font size of the dropdown */
+    }
+    
+    /* Responsive adjustments for medium screens */
+    @media (max-width: 768px) {
+        .form-control {
+            max-width: 100%; /* Use full width for medium screens */
+            font-size: 14px; /* Slightly smaller font size for readability */
+        }
+    }
+    
+    /* Responsive adjustments for small screens */
+    @media (max-width: 480px) {
+        .form-control {
+            max-width: 100%; /* Full width on small screens */
+            font-size: 14px; /* Maintain font readability */
+            padding: 8px; /* Slightly reduce padding for smaller devices */
+        }
+    
+        .form-control option {
+            font-size: 12px; /* Adjust font size for options */
+        }
+    }
+    
+    /* Responsive adjustments for very small screens */
+    @media (max-width: 320px) {
+        .form-control {
+            font-size: 12px; /* Smaller font size for readability */
+        }
+    }
+    
+    /* Submit button container styling */
+    .submit-btn-container {
+        text-align: center; /* Center align the submit button */
+    }
+    
+    /* Submit button styling */
+    .submit-btn {
+        padding: 10px 20px; /* Padding for the button */
+        font-size: 16px; /* Font size for the button */
+        border: none; /* Remove border */
+        border-radius: 5px; /* Rounded corners */
+        background-color: #007bff; /* Button background color */
+        color: #fff; /* Button text color */
+        cursor: pointer; /* Pointer cursor on hover */
+    }
+    
+    .submit-btn:hover {
+        background-color: #0056b3; /* Darker background color on hover */
+    }
+    
+    </style>
+    
+    <form action="/recommend_houses" method="post" class="form-container">
+        <label for="user_input" class="form-label">Select a house:</label>
+        <select name="user_input" id="user_input" class="form-control" required>
+            <option value="Raheja Vanya">Raheja Vanya</option>
+            <option value="Paras Ekam Homes">Paras Ekam Homes</option>
+            <option value="Landmark The Homes 81">Landmark The Homes 81</option>
+            <option value="ROF Normanton Park">ROF Normanton Park</option>
+            <option value="Corona Greens">Corona Greens</option>
+            <option value="Umang Winter Hills">Umang Winter Hills</option>
+            <option value="Puri Diplomatic Greens">Puri Diplomatic Greens</option>
+            <option value="Silverglades Hightown Residences">Silverglades Hightown Residences</option>
+        </select>
+        <div class="submit-btn-container">
+            <input type="submit" class="submit-btn" value="Get Recommendations">
+        </div>
+    </form>

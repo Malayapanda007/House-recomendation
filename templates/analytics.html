@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Dashboard</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f8;
+        }
+        
+        header {
+            background: linear-gradient(90deg, #007bff, #00bcd4);
+            padding: 30px 20px;
+            color: white;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .container {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .charts {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 30px;
+        }
+
+        .chart {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .chart:hover {
+            transform: scale(1.05);
+        }
+
+        .chart img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .chart h2 {
+            color: #333;
+            font-size: 1.75rem;
+            margin-bottom: 15px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .charts {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .chart {
+                width: 100%;
+                margin-bottom: 30px;
+            }
+        }
+
+        /* Title and Button Styles */
+        .title {
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .btn {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #218838;
+        }
+
+        /* Card Styling */
+        .card {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .card img {
+            border-radius: 15px;
+            max-height: 300px;
+            max-width: 100%;
+        }
+
+        /* Styling for Visualizations */
+        .chart img {
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Custom Background for Body */
+        .bg-light {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Analytics Dashboard</h1>
+    </header>
+
+    <div class="container">
+        <div class="charts">
+            <div class="chart">
+                <h2>Average Price by Property Type</h2>
+                <img src="data:image/png;base64,{{ bar_chart }}" alt="Bar Chart">
+            </div>
+            <div class="chart">
+                <h2>Distribution of Property Types</h2>
+                <img src="data:image/png;base64,{{ pie_chart }}" alt="Pie Chart">
+            </div>
+        </div>
+
+        <div class="charts">
+            <div class="chart">
+                <h2>Price Distribution by Property Type</h2>
+                <img src="data:image/png;base64,{{ boxplot }}" alt="Boxplot">
+            </div>
+            <div class="chart">
+                <h2>Distribution of Built-up Area</h2>
+                <img src="data:image/png;base64,{{ histogram }}" alt="Histogram">
+            </div>
+        </div>
+
+        <div class="charts">
+            <div class="chart">
+                <h2>Price vs Built-up Area</h2>
+                <img src="data:image/png;base64,{{ scatter_plot }}" alt="Scatter Plot">
+            </div>
+            <div class="chart">
+                <h2>Correlation Heatmap</h2>
+                <img src="data:image/png;base64,{{ heatmap }}" alt="Heatmap">
+            </div>
+        </div>
+
+        <div class="charts">
+            <div class="chart">
+                <h2>Number of Properties by Sector</h2>
+                <img src="data:image/png;base64,{{ city_count_chart }}" alt="City Count Chart">
+            </div>
+            <div class="chart">
+                <h2>Average Price by Number of Bedrooms</h2>
+                <img src="data:image/png;base64,{{ avg_price_bedrooms_chart }}" alt="Line Plot">
+            </div>
+        </div>
+
+        <div class="charts">
+            <div class="chart">
+                <h2>Price Distribution by Property Type</h2>
+                <img src="data:image/png;base64,{{ price_property_type_boxplot }}" alt="Price Property Type Boxplot">
+            </div>
+            <div class="chart">
+                <h2>Average Price by Sector</h2>
+                <img src="data:image/png;base64,{{ avg_price_by_sector_chart }}" alt="Average Price by Sector">
+            </div>
+        </div>
+
+        <div class="charts">
+            <div class="chart">
+                <h2>Price vs Built-up Area</h2>
+                <img src="data:image/png;base64,{{ scatter_plot_builtup_area }}" alt="Scatter Plot Built-up Area">
+            </div>
+            <div class="chart">
+                <h2>Number of Bedrooms vs Price</h2>
+                <img src="data:image/png;base64,{{ bedroom_count_chart }}" alt="Bedroom Count Chart">
+            </div>
+        </div>
+
+        <div class="charts">
+            <div class="chart">
+                <h2>Correlation Heatmap</h2>
+                <img src="data:image/png;base64,{{ heatmap_corr }}" alt="Correlation Heatmap">
+            </div>
+            <div class="chart">
+                <h2>Furnishing Type Distribution</h2>
+                <img src="data:image/png;base64,{{ furnishing_type_pie_chart }}" alt="Furnishing Type Pie Chart">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

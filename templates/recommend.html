@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommendations - ML Project</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>
+/* Custom Styling for Recommendations */
+.recommendation-item {
+    color: rgba(207, 12, 12, 0.73); /* Change this color to your preferred */
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: transparent;
+ 
+}
+
+/* Hover effect */
+.recommendation-item:hover {
+    color:rgba(233, 154, 164, 0.69); /* Hover effect color */
+    cursor: pointer;
+}
+
+/* Centering text */
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    /* Adjusting font size and padding for smaller screens */
+    .recommendation-item {
+        font-size: 1rem; /* Smaller text for mobile devices */
+        padding: 8px;
+    }
+
+    /* Ensuring the header is still centered on smaller screens */
+    .center-text {
+        font-size: 1.5rem; /* Slightly smaller size on mobile */
+    }
+}
+
+@media (max-width: 576px) {
+    /* Further adjust for very small screens (like phones in portrait mode) */
+    .recommendation-item {
+        font-size: 0.9rem; /* Even smaller font size */
+        padding: 6px;
+    }
+
+    .center-text {
+        font-size: 1.25rem; /* Further reduce font size for small screens */
+    }
+}
+/* Dropdown box styling */
+
+
+/* Submit button styling */
+.submit-btn {
+    padding: 12px 25px;
+    font-size: 15px;
+    background-color:rgb(51, 46, 38);
+    border: none;
+    color: white;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%; /* Full width for responsiveness */
+    max-width: 200px; /* Optional: limit the max width */
+}
+
+.submit-btn:hover {
+    background-color:rgb(194, 167, 126); /* Change color on hover */
+}
+
+/* Centering the submit button container */
+.submit-btn-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .dropdown, .submit-btn {
+        width: 100%; /* Ensure full width on smaller screens */
+    }
+}
+      
+
+
+    </style>
+
+
+    <body class="d-flex flex-column min-vh-100">
+        <header class="bg-dark text-white">
+            <div class="container d-flex justify-content-between align-items-center py-3">
+                <!-- Logo and Title -->
+                <div class="d-flex align-items-center">
+                    <img src="../static/log.webp" alt="Logo" style="height: 40px; margin-right: 20px;">
+                    <h1 class="ghar">GHARWALI</h1>
+                </div>
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/analysis">Analysis</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/predict">Predict Prices</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/recommend">Recommendations</a>
+                        </li>
+                       <!-- <li class="nav-item">
+                            <a class="nav-link" href="insights.html">Insights</a>
+                        </li> -->
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow-1">
+        <div class="hero-section text-white text-center py-5">
+            <div class="container">
+                <h2>Recommendations</h2>
+                <p class="lead">Discover personalized recommendations for finding your dream home.</p>
+            </div>
+        </div>
+
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card shadow-sm transition-effect">
+                        <div class="card-body">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h1 class="text-white" style="font-size:20px"></h1>
+                                        <!-- Form for user input -->
+                                        <form action="/recommend_houses" method="post">
+                                            <label for="user_input" class="text-white"></label>
+                                            
+                                            <!-- Dropdown for property selection -->
+                                            <select name="user_input" class="form-control" required>
+                                                <option value="">Select a Property</option>
+                                                <option value="Smartworld One DXP">Smartworld One DXP</option>
+                                                <option value="M3M Crown">M3M Crown</option>
+                                                <option value="Adani Brahma Samsara Vilasa">Adani Brahma Samsara Vilasa</option>
+                                                <option value="Sobha City">Sobha City</option>
+                                                <option value="Signature Global City 93">Signature Global City 93</option>
+                                                <option value="Whiteland The Aspen">Whiteland The Aspen</option>
+                                                <option value="Bestech Altura">Bestech Altura</option>
+                                                <option value="Elan The Presidential">Elan The Presidential</option>
+                                                <option value="Signature Global City 92">Signature Global City 92</option>
+                                                <option value="Emaar Digihomes">Emaar Digihomes</option>
+                                                <option value="Signature Global City 79B">Signature Global City 79B</option>
+                                                <option value="DLF The Arbour">DLF The Arbour</option>
+                                                <option value="M3M Antalya Hills">M3M Antalya Hills</option>
+                                                <option value="Signature Global City 81">Signature Global City 81</option>
+                                                <option value="SS Linden Floors">SS Linden Floors</option>
+                                                <option value="Mahindra Luminare">Mahindra Luminare</option>
+                                                <option value="M3M Golf Hills">M3M Golf Hills</option>
+                                                <option value="Suncity Vatsal Valley">Suncity Vatsal Valley</option>
+                                                <option value="Whiteland Blissville">Whiteland Blissville</option>
+                                                <option value="Trump Tower">Trump Tower</option>
+                                                <option value="Tulip Monsella">Tulip Monsella</option>
+                                                <option value="Krisumi Waterfall Residences">Krisumi Waterfall Residences</option>
+                                                <option value="PropertyName">PropertyName</option>
+                                                <option value="M3M Capital">M3M Capital</option>
+                                                <option value="Godrej Meridien">Godrej Meridien</option>
+                                                <option value="La Vida by Tata Housing">La Vida by Tata Housing</option>
+                                                <option value="Birla Navya">Birla Navya</option>
+                                                <option value="Signature Global City">Signature Global City</option>
+                                                <option value="Godrej 101">Godrej 101</option>
+                                                <option value="M3M Soulitude">M3M Soulitude</option>
+                                                <option value="BPTP Terra">BPTP Terra</option>
+                                                <option value="M3M Skycity">M3M Skycity</option>
+                                                <option value="MRG The Crown">MRG The Crown</option>
+                                                <option value="Godrej Nature Plus Serenity">Godrej Nature Plus Serenity</option>
+                                                <option value="SS The Leaf">SS The Leaf</option>
+                                                <option value="Eldeco Acclaim">Eldeco Acclaim</option>
+                                                <option value="Emaar Gurgaon Greens">Emaar Gurgaon Greens</option>
+                                                <option value="Oxirich Chintamanis">Oxirich Chintamanis</option>
+                                                <option value="DLF Garden City Floors">DLF Garden City Floors</option>
+                                                <option value="Anant Raj Estates">Anant Raj Estates</option>
+                                                <option value="Tulip Yellow">Tulip Yellow</option>
+                                                <option value="BPTP Amstoria">BPTP Amstoria</option>
+                                                <option value="Emaar Emerald Hills">Emaar Emerald Hills</option>
+                                                <option value="M3M Golfestate">M3M Golfestate</option>
+                                                <option value="ATS Triumph">ATS Triumph</option>
+                                                <option value="ATS Marigold">ATS Marigold</option>
+                                                <option value="Signature Global City 37D Ph 2">Signature Global City 37D Ph 2</option>
+                                                <option value="DLF Alameda">DLF Alameda</option>
+                                                <option value="Experion Windchants">Experion Windchants</option>
+                                                <option value="Saan Verdante">Saan Verdante</option>
+                                                <option value="4S Aradhya Homes">4S Aradhya Homes</option>
+                                                <option value="Yash Vihar">Yash Vihar</option>
+                                                <option value="Smart World Orchard">Smart World Orchard</option>
+                                                <option value="DLF The Camellias">DLF The Camellias</option>
+                                                <option value="Birla Navya Avik">Birla Navya Avik</option>
+                                                <option value="Adani Samsara Avasa">Adani Samsara Avasa</option>
+                                                <option value="DLF The Crest">DLF The Crest</option>
+                                                <option value="DLF The Magnolias">DLF The Magnolias</option>
+                                                <option value="DLF The Aralias">DLF The Aralias</option>
+                                                <option value="Ansal API Esencia">Ansal API Esencia</option>
+                                                <option value="Pioneer Araya">Pioneer Araya</option>
+                                                <option value="M3M Merlin">M3M Merlin</option>
+                                                <option value="Smart World Gems">Smart World Gems</option>
+                                                <option value="Vatika Aspiration">Vatika Aspiration</option>
+                                                <option value="Ace Palm Floors">Ace Palm Floors</option>
+                                                <option value="DLF Gardencity Enclave">DLF Gardencity Enclave</option>
+                                                <option value="Emaar Palm Heights">Emaar Palm Heights</option>
+                                                <option value="Signature Global Park">Signature Global Park</option>
+                                                <option value="Emaar MGF Marbella">Emaar MGF Marbella</option>
+                                                <option value="Rishali Luxe Residency 112">Rishali Luxe Residency 112</option>
+                                                <option value="Puri The Aravallis">Puri The Aravallis</option>
+                                                <option value="International City by SOBHA Phase 2">International City by SOBHA Phase 2</option>
+                                                <option value="Emaar MGF The Palm Drive">Emaar MGF The Palm Drive</option>
+                                                <option value="BPTP Green Oaks">BPTP Green Oaks</option>
+                                                <option value="Puri Emerald Bay">Puri Emerald Bay</option>
+                                                <option value="Ireo Victory Valley">Ireo Victory Valley</option>
+                                                <option value="DLF Gardencity">DLF Gardencity</option>
+                                                <option value="Tata Primanti">Tata Primanti</option>
+                                                <option value="DLF Park Place">DLF Park Place</option>
+                                                <option value="Central Park Flower Valley">Central Park Flower Valley</option>
+                                                <option value="Ireo Skyon">Ireo Skyon</option>
+                                                <option value="AIPL The Peaceful Homes">AIPL The Peaceful Homes</option>
+                                                <option value="Adani M2K Oyster Grande">Adani M2K Oyster Grande</option>
+                                                <option value="G99">G99</option>
+                                                <option value="Emaar MGF Emerald Floors Premier">Emaar MGF Emerald Floors Premier</option>
+                                                <option value="ROF Insignia Park">ROF Insignia Park</option>
+                                                <option value="DLF The Ultima">DLF The Ultima</option>
+                                                <option value="Indiabulls Enigma">Indiabulls Enigma</option>
+                                                <option value="Experion The Westerlies">Experion The Westerlies</option>
+                                                <option value="Hero Homes">Hero Homes</option>
+                                                <option value="Central Park Flower Valley Mikasa Plots">Central Park Flower Valley Mikasa Plots</option>
+                                                <option value="M3M Skywalk">M3M Skywalk</option>
+                                                <option value="Ireo The Grand Arch">Ireo The Grand Arch</option>
+                                                <option value="JMS The Nation">JMS The Nation</option>
+                                                <option value="Imperia The Esfera">Imperia The Esfera</option>
+                                                <option value="Ramprastha Primera">Ramprastha Primera</option>
+                                                <option value="Experion The Heartsong">Experion The Heartsong</option>
+                                                <option value="DLF New Town Heights 2">DLF New Town Heights 2</option>
+                                                <option value="DLF The Primus">DLF The Primus</option>
+                                                <option value="DLF The Skycourt">DLF The Skycourt</option>
+                                                <option value="Central Park Resorts">Central Park Resorts</option>
+                                                <option value="Suncity Avenue 76">Suncity Avenue 76</option>
+                                                <option value="International City by Sobha Phase 1">International City by Sobha Phase 1</option>
+                                                <option value="Ambience Creacions">Ambience Creacions</option>
+                                                <option value="Vatika Xpressions">Vatika Xpressions</option>
+                                                <option value="M3M Sierra 68">M3M Sierra 68</option>
+                                                <option value="Anand Niketan">Anand Niketan</option>
+                                                <option value="DLF The Belaire">DLF The Belaire</option>
+                                                <option value="Godrej Aria">Godrej Aria</option>
+                                                <option value="Ansals Shiva Som Valley">Ansals Shiva Som Valley</option>
+                                                <option value="Vipul World">Vipul World</option>
+                                                <option value="Central Park Flower Valley Aqua Front Towers">Central Park Flower Valley Aqua Front Towers</option>
+                                                <option value="Tulip Violet">Tulip Violet</option>
+                                                <option value="Eldeco Accolade">Eldeco Accolade</option>
+                                                <option value="M3M Natura">M3M Natura</option>
+                                                <option value="Emaar Imperial Gardens">Emaar Imperial Gardens</option>
+                                                <option value="Ireo City Plots">Ireo City Plots</option>
+                                                <option value="Parsvnath Exotica">Parsvnath Exotica</option>
+                                                <option value="Pioneer Urban Presidia">Pioneer Urban Presidia</option>
+                                                <option value="Suncity Platinum Towers">Suncity Platinum Towers</option>
+                                                <option value="Godrej Nature Plus">Godrej Nature Plus</option>
+                                                <option value="Bestech Park View Grand Spa">Bestech Park View Grand Spa</option>
+                                                <option value="Shree Vardhman Victoria">Shree Vardhman Victoria</option>
+                                                <option value="Silverglades The Melia">Silverglades The Melia</option>
+                                                <option value="Shree Vardhman Flora">Shree Vardhman Flora</option>
+                                                <option value="Vatika Seven Elements">Vatika Seven Elements</option>
+                                                <option value="Bellavista Central Park Resorts">Bellavista Central Park Resorts</option>
+                                                <option value="M3M Heights">M3M Heights</option>
+                                                <option value="Godrej Habitat">Godrej Habitat</option>
+                                                <option value="Adani Brahma Samsara">Adani Brahma Samsara</option>
+                                                <option value="DLF The Grove">DLF The Grove</option>
+                                                <option value="Corona Optus">Corona Optus</option>
+                                                <option value="Central Park Flower Valley Flamingo Floors">Central Park Flower Valley Flamingo Floors</option>
+                                                <option value="ROF Insignia Park 2">ROF Insignia Park 2</option>
+                                                <option value="Indiabulls Centrum Park">Indiabulls Centrum Park</option>
+                                                <option value="BPTP Fortuna">BPTP Fortuna</option>
+                                                <option value="Bestech Park View Spa Next">Bestech Park View Spa Next</option>
+                                                <option value="DLF The Pinnacle">DLF The Pinnacle</option>
+                                                <option value="Godrej Oasis">Godrej Oasis</option>
+                                                <option value="Anant Raj Estate Plots">Anant Raj Estate Plots</option>
+                                                <option value="Mapsko The Icon 79">Mapsko The Icon 79</option>
+                                                <option value="DLF Regal Gardens">DLF Regal Gardens</option>
+                                                <option value="DLF The Icon">DLF The Icon</option>
+                                                <option value="Vatika Sovereign Park">Vatika Sovereign Park</option>
+                                                <option value="Vatika Sovereign Next">Vatika Sovereign Next</option>
+                                                <option value="Central Park Flower Valley The Room">Central Park Flower Valley The Room</option>
+                                                <option value="M3M Sky Lofts">M3M Sky Lofts</option>
+                                                <option value="Golden Park">Golden Park</option>
+                                                <option value="Ireo Savannah">Ireo Savannah</option>
+                                                <option value="Satya Merano Greens">Satya Merano Greens</option>
+                                                <option value="ATS Kocoon">ATS Kocoon</option>
+                                                <option value="Paras Quartier">Paras Quartier</option>
+                                                <option value="Ashiana Amarah">Ashiana Amarah</option>
+                                                <option value="JMS Prime Land">JMS Prime Land</option>
+                                                <option value="India Rashtra">India Rashtra</option>
+                                                <option value="Vipul Tatvam Villa">Vipul Tatvam Villa</option>
+                                                <option value="Orris Woodview Residencies">Orris Woodview Residencies</option>
+                                                <option value="Emaar MGF Palm Hills">Emaar MGF Palm Hills</option>
+                                                <option value="Vatika City">Vatika City</option>
+                                                <option value="DLF New Town Heights 1">DLF New Town Heights 1</option>
+                                                <option value="Vatika Gurgaon 21">Vatika Gurgaon 21</option>
+                                                <option value="Signature The Roselia">Signature The Roselia</option>
+                                                <option value="Vatika Independent Floors">Vatika Independent Floors</option>
+                                                <option value="Adani Tatva Estates">Adani Tatva Estates</option>
+                                                <option value="Emaar Palm Gardens">Emaar Palm Gardens</option>
+                                                <option value="Pareena Mi Casa">Pareena Mi Casa</option>
+                                                <option value="The Close North">The Close North</option>
+                                                <option value="Emaar The Palm Springs">Emaar The Palm Springs</option>
+                                                <option value="BPTP Park Serene">BPTP Park Serene</option>
+                                                <option value="Orchid IVY Floors">Orchid IVY Floors</option>
+                                                <option value="ILD Greens">ILD Greens</option>
+                                                <option value="Godrej Icon">Godrej Icon</option>
+                                                <option value="Orris Aster Court Premier">Orris Aster Court Premier</option>
+                                                <option value="M3M Latitude">M3M Latitude</option>
+                                                <option value="Emaar MGF Emerald Estate">Emaar MGF Emerald Estate</option>
+                                                <option value="Green Court">Green Court</option>
+                                                <option value="TARC Maceo">TARC Maceo</option>
+                                                <option value="Raheja Vanya">Raheja Vanya</option>
+                                                <option value="Paras Ekam Homes">Paras Ekam Homes</option>
+                                                <option value="Landmark The Homes 81">Landmark The Homes 81</option>
+                                                <option value="ROF Normanton Park">ROF Normanton Park</option>
+                                                <option value="Corona Greens">Corona Greens</option>
+                                                <option value="Umang Winter Hills">Umang Winter Hills</option>
+                                                <option value="Puri Diplomatic Greens">Puri Diplomatic Greens</option>
+                                                <option value="Silverglades Hightown Residences">Silverglades Hightown Residences</option>
+                                                <option value="Pioneer Park">Pioneer Park</option>
+                                                <option value="Anant Raj Ashok Estate">Anant Raj Ashok Estate</option>
+                                                <option value="Paras Dews">Paras Dews</option>
+                                                <option value="Ireo The Corridors">Ireo The Corridors</option>
+                                                <option value="Assotech Blith">Assotech Blith</option>
+                                                <option value="Bestech Park View Sanskruti">Bestech Park View Sanskruti</option>
+                                                <option value="Signature Global the Millennia">Signature Global the Millennia</option>
+                                                <option value="Orchid Island">Orchid Island</option>
+                                                <option value="Ramprastha The Edge Towers">Ramprastha The Edge Towers</option>
+                                                <option value="Pyramid Spring Valley">Pyramid Spring Valley</option>
+                                                <option value="Bestech Park View Ananda">Bestech Park View Ananda</option>
+                                                <option value="Mapsko Casa Bella">Mapsko Casa Bella</option>
+                                                <option value="Mahindra Aura">Mahindra Aura</option>
+                                                <option value="Godrej Air">Godrej Air</option>
+                                                <option value="Conscient Habitat">Conscient Habitat</option>
+                                                <option value="Conscient Heritage Max">Conscient Heritage Max</option>
+                                                <option value="Vipul Belmonte">Vipul Belmonte</option>
+                                                <option value="Unitech The Residences">Unitech The Residences</option>
+                                                <option value="ILD Grand">ILD Grand</option>
+                                                <option value="Signature Global Solera 2">Signature Global Solera 2</option>
+                                                <option value="Signature Global Solera">Signature Global Solera</option>
+                                                <option value="M3M Woodshire">M3M Woodshire</option>
+                                                <option value="Vatika India Next Plots">Vatika India Next Plots</option>
+                                                <option value="MV Buildcon Precore City">MV Buildcon Precore City</option>
+                                                <option value="Lion Infra Green Valley">Lion Infra Green Valley</option>
+                                                <option value="Orchid Petals">Orchid Petals</option>
+                                                <option value="BPTP Mansions Park Prime">BPTP Mansions Park Prime</option>
+                                                <option value="Emaar MGF Palm Terraces">Emaar MGF Palm Terraces</option>
+                                                <option value="Optimal ultra luxury builder floors">Optimal ultra luxury builder floors</option>
+                                                <option value="Salcon The Verandas">Salcon The Verandas</option>
+                                                <option value="BPTP Park Generations">BPTP Park Generations</option>
+                                                <option value="Zara Aavaas">Zara Aavaas</option>
+                                                <option value="Yashika 104">Yashika 104</option>
+                                                <option value="Breez Global Heights 89">Breez Global Heights 89</option>
+                                                <option value="Zara Rossa">Zara Rossa</option>
+                                                <option value="Alpha Corp GurgaonOne 84">Alpha Corp GurgaonOne 84</option>
+                                                <option value="Krrish Florence Estate">Krrish Florence Estate</option>
+                                                <option value="Tulip Purple">Tulip Purple</option>
+                                                <option value="Tulip Ivory">Tulip Ivory</option>
+                                                <option value="Shree Vardhman City">Shree Vardhman City</option>
+                                                <option value="Signature Global Prime">Signature Global Prime</option>
+                                                <option value="Antriksh Heights">Antriksh Heights</option>
+                                                <option value="BPTP Pedestal">BPTP Pedestal</option>
+                                                <option value="Vatika Express City">Vatika Express City</option>
+                                                <option value="Pegasus Atulyam 83">Pegasus Atulyam 83</option>
+                                                <option value="DLF The Summit">DLF The Summit</option>
+                                                <option value="The Close South">The Close South</option>
+                                                <option value="Emaar Mgf Palm Terraces Select">Emaar Mgf Palm Terraces Select</option>
+                                                <option value="Unitech Fresco">Unitech Fresco</option>
+                                                <option value="Unitech Escape">Unitech Escape</option>
+                                                <option value="Unitech Harmony">Unitech Harmony</option>
+                                                <option value="Vatika The Seven Lamps">Vatika The Seven Lamps</option>
+                                                <option value="BPTP Freedom Park Life">BPTP Freedom Park Life</option>
+                                                <option value="DLF New Town Heights">DLF New Town Heights</option>
+                                                <option value="La Lagune">La Lagune</option>
+                                                <option value="M3M My Den">M3M My Den</option>
+                                                <option value="Suncity Avenue 102">Suncity Avenue 102</option>
+                                                <option value="DLF Princeton Estate">DLF Princeton Estate</option>
+                                                <option value="Pyramid Urban Homes 2">Pyramid Urban Homes 2</option>
+                                                <option value="Satya The Hermitage">Satya The Hermitage</option>
+                                                <option value="BPTP Spacio">BPTP Spacio</option>
+                                                <option value="SS The Coralwood">SS The Coralwood</option>
+                                            </select>
+                                            <!-- Centering the submit button -->
+                                            <div class="submit-btn-container text-center mt-3">
+                                                <input type="submit" class="btn btn-lg btn-warning submit-btn" value="Get Recommendations">
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <!-- Display Recommendations -->
+                                {% if recommendations %}
+                                <h3 class="text-white mt-5 center-text">Recommended Properties</h3>
+
+                                    <div class="recommendations-list">
+                                        {% for property in recommendations %}
+                                            <div class="recommendation-item">
+                                                {{ property }}
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                {% elif message %}
+                                    <p class="text-white mt-5">{{ message }}</p>
+                                {% else %}
+                                    <p class="text-white mt-5"></p>
+                                {% endif %}
+                            </div> <!-- Closing the row and container divs -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-3 mt-auto">
+        <p>&copy; 2024 Malaya Panda - All Rights Reserved</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
